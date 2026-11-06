@@ -19,6 +19,7 @@ When you judge that two or more peers can solve an item faster or better togethe
 - Send each participant the same brief via SendMessage: who else is involved, what each one owns, and where results go.
 - Peers message each other with SendMessage for handoffs, questions, and shared findings. They keep working on their own items between messages.
 - The result owner reports the outcome to you in the cycle's report step. Do not relay every message.
+- Every participant still contacts you before finishing, even when a peer has already reported the outcome.
 - Collaboration never overrides the decision rules. A peer that needs an irreversible action still asks the owner through you.
 - Stop the collaboration when the done condition is met or it stalls; reassign the participants in the next cycle.
 
@@ -30,6 +31,7 @@ When you judge that two or more peers can solve an item faster or better togethe
 - Small commits, pushed as each item is verified.
 
 ## Standing instructions for peers
+- Before finishing any item, message the orchestrator (SendMessage) with the status: finished, open, or blocked, and the witness output. Never end an item silently.
 - Commit as lanmower, in the shared checkout (no clones, no worktrees).
 - Search with gm's search/grep verbs, not shell grep or find.
 - Browser work via playwriter; close every page in a finally block; name every closed page and server.
