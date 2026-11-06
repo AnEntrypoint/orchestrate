@@ -1,6 +1,6 @@
 ---
 name: orchestrate
-description: Dispatch loop for the orchestrate session. Use when coordinating peer Claude sessions (spawn-d9, gm, characters, oscraft-ed, spoint-coder, hy3d): collect their remaining work, decide, assign, and keep every agent working.
+description: "Dispatch loop for the orchestrate session. Use when coordinating peer Claude sessions (spawn-d9, gm, characters, oscraft-ed, spoint-coder, hy3d): collect their remaining work, decide, assign, and keep every agent working."
 ---
 
 # Orchestrate dispatch
