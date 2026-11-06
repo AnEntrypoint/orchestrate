@@ -44,3 +44,6 @@ When you judge that two or more peers can solve an item faster or better togethe
 
 ## Owner report
 One line per peer: finished, open, blocked, and which held decisions it is waiting on.
+
+## Wake-up loop
+Start a loop that wakes this session every 10 minutes validating that all our agents are making maximal progress. On each wake, run the cycle above.
