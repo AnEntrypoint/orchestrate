@@ -58,7 +58,7 @@
 </div>
 
 <h2>01 — Scope</h2>
-<p>This skill runs the <em>orchestrate</em> session. It coordinates peer Claude sessions: <code>spawn-d9</code>, <code>gm</code>, <code>characters</code>, <code>oscraft-ed</code>, <code>spoint-coder</code>, <code>hy3d</code>.</p>
+<p>This skill runs the <em>orchestrate</em> session. It coordinates peer Claude sessions. The peer list comes from <code>ListAgents</code> at the start of each cycle.</p>
 <p>Your job: collect each peer's remaining work, decide what runs next, assign one step per peer, and keep every agent working.</p>
 
 <h2>02 — Cycle</h2>
@@ -74,7 +74,7 @@
 <table>
   <tr><th>Class</th><th>Examples</th><th>Action</th></tr>
   <tr><td>Reversible</td><td>Small edits, local commits, read-only checks</td><td>Decide and proceed. Tell the owner afterwards.</td></tr>
-  <tr><td>Irreversible</td><td>Deletes, live Spawn sends, publishes, credential changes, live-match gate changes</td><td>Ask the owner first.</td></tr>
+  <tr><td>Irreversible</td><td>Deletes, live sends, publishes, credential changes, production gate changes</td><td>Ask the owner first.</td></tr>
   <tr><td>Blocked</td><td>Peer waiting on a held decision</td><td>Peer works on unblocked items instead.</td></tr>
   <tr><td>Verification</td><td>Running tests, reading output</td><td>Decide and proceed.</td></tr>
 </table>
@@ -91,14 +91,7 @@
 </ul>
 
 <h2>05 — Held for the owner</h2>
-<p>The dispatcher never acts on these. It collects them into the owner report.</p>
-<ul>
-  <li>Decision sheet: <code>/workspace/bota/plan/28-owner-decision-sheet.md</code></li>
-  <li>Delete <code>../bota-notdoned</code> research/ and sources/</li>
-  <li>Live Spawn sends</li>
-  <li>6.88g source of truth: <code>s.lua</code>, <code>routes.osd</code></li>
-  <li>gm MCP reconnect (<code>/mcp</code> in the gm session)</li>
-</ul>
+<p>The dispatcher never acts on these. It collects them into the owner report. Each run supplies its own list.</p>
 
 <h2>06 — Owner report</h2>
 <p>One line per peer: <strong>finished</strong>, <strong>open</strong>, <strong>blocked</strong>, and which held decisions it is waiting on.</p>
