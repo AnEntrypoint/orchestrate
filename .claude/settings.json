@@ -5,11 +5,6 @@
   ],
   "permissions": {
     "allow": [
-      "SendMessage",
-      "ListAgents",
-      "Skill"
-    ],
-    "deny": [
       "Bash",
       "Read",
       "Write",
@@ -24,9 +19,12 @@
       "CronCreate",
       "CronDelete",
       "CronList",
-      "RemoteTrigger",
       "ScheduleWakeup",
+      "RemoteTrigger",
       "PushNotification",
+      "SendMessage",
+      "ListAgents",
+      "Skill",
       "EnterPlanMode",
       "ExitPlanMode",
       "EnterWorktree",
@@ -34,11 +32,13 @@
       "TaskStop",
       "Workflow",
       "DesignSync",
-      "mcp__claude_ai_Gmail",
-      "mcp__claude_ai_Google_Drive",
+      "mcp__gm",
       "mcp__claude_ai_Claude_Docs",
-      "mcp__claude_ai_GQueues"
-    ]
+      "mcp__claude_ai_GQueues",
+      "mcp__claude_ai_Gmail",
+      "mcp__claude_ai_Google_Drive"
+    ],
+    "deny": []
   },
   "disableAllHooks": true,
   "enabledPlugins": {
