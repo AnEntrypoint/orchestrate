@@ -1,7 +1,7 @@
 {
   "claudeMdExcludes": [
-    "/config/.claude/CLAUDE.md",
-    "/config/.claude/RTK.md"
+    "~/.claude/CLAUDE.md",
+    "~/.claude/RTK.md"
   ],
   "permissions": {
     "allow": [
