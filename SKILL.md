@@ -1,6 +1,6 @@
 ---
 name: orchestrate
-description: "Dispatch loop for the orchestrate session. Use when coordinating peer Claude sessions (spawn-d9, gm, characters, oscraft-ed, spoint-coder, hy3d): collect their remaining work, decide, assign, and keep every agent working."
+description: "Dispatch loop for the orchestrate session. Use when coordinating peer Claude sessions: collect their remaining work, decide, assign, and keep every agent working."
 ---
 
 # Orchestrate dispatch
@@ -25,7 +25,7 @@ When you judge that two or more peers can solve an item faster or better togethe
 
 ## Decision rules
 - Reversible: decide and proceed; tell the owner afterwards.
-- Irreversible (deletes, live Spawn sends, publishes, credential changes, changes to live-match gates): ask the owner first.
+- Irreversible (deletes, live sends, publishes, credential changes, changes to production gates): ask the owner first.
 - Blocked peers work on unblocked items instead.
 - Read-only verification: decide and proceed.
 - Small commits, pushed as each item is verified.
@@ -40,11 +40,7 @@ When you judge that two or more peers can solve an item faster or better togethe
 - Comments become code: replace prose comments with self-explanatory code, or move what cannot be expressed that way into AGENTS.md.
 
 ## Held for the owner
-- Decision sheet: /workspace/bota/plan/28-owner-decision-sheet.md
-- Delete ../bota-notdoned research/, sources/
-- Live Spawn sends
-- 6.88g source of truth s.lua, routes.osd
-- gm MCP reconnect (/mcp in the gm session)
+- Items listed in the run's owner-held list. The dispatcher never acts on them; it collects them into the owner report.
 
 ## Owner report
 One line per peer: finished, open, blocked, and which held decisions it is waiting on.
