@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ORCHESTRATE — Manual</title>
+<style>
+  :root { --ink: #000; --paper: #fff; --rule: 4px; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--paper); color: var(--ink); }
+  body {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 16px; line-height: 1.5; padding: 2rem; max-width: 60rem; margin: auto;
+  }
+  h1, h2, h3 { font-family: Impact, "Arial Black", Arial, sans-serif; text-transform: uppercase; line-height: 1; margin: 0; }
+  h1 { font-size: 3.5rem; border: var(--rule) solid var(--ink); padding: 1rem; margin-bottom: 2rem; }
+  h2 { font-size: 2rem; border-top: var(--rule) solid var(--ink); padding-top: 1rem; margin: 3rem 0 1rem; }
+  h3 { font-size: 1.25rem; margin: 2rem 0 .5rem; }
+  p, li { max-width: 52rem; }
+  ol li, ul li { margin-bottom: .4rem; }
+  code, pre { font-family: inherit; background: var(--paper); border: 2px solid var(--ink); }
+  code { padding: 0 .3rem; }
+  pre { padding: 1rem; overflow-x: auto; }
+  .tag { display: inline-block; border: 2px solid var(--ink); padding: .1rem .5rem; font-weight: 700; text-transform: uppercase; }
+  .box { border: var(--rule) solid var(--ink); padding: 1rem 1.25rem; margin: 1.5rem 0; }
+  .box.solid { background: var(--ink); color: var(--paper); }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 2px solid var(--ink); padding: .5rem; text-align: left; vertical-align: top; }
+  th { background: var(--ink); color: var(--paper); text-transform: uppercase; }
+  a { color: var(--ink); font-weight: 700; }
+  footer { margin-top: 4rem; border-top: var(--rule) solid var(--ink); padding-top: 1rem; font-size: .9rem; }
+  .print-btn { font: inherit; font-weight: 700; text-transform: uppercase; background: var(--paper); color: var(--ink); border: var(--rule) solid var(--ink); padding: .5rem 1rem; cursor: pointer; margin-bottom: 2rem; }
+  .print-btn:hover { background: var(--ink); color: var(--paper); }
+
+  @media print {
+    @page { margin: 18mm; }
+    body { padding: 0; max-width: none; font-size: 11pt; }
+    .print-btn { display: none; }
+    h1 { font-size: 28pt; }
+    h2 { font-size: 18pt; break-after: avoid; }
+    h3 { break-after: avoid; }
+    .box, table, pre { break-inside: avoid; }
+    a[href]::after { content: " (" attr(href) ")"; font-weight: 400; }
+    a[href^="#"]::after { content: none; }
+  }
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">Print this manual</button>
+
+<h1>Orchestrate<br>Dispatch Manual</h1>
+
+<p><span class="tag">Skill</span> <span class="tag">Dispatch loop</span> <span class="tag">Peer sessions</span></p>
+
+<div class="box solid">
+  <p><strong>You are the dispatcher. You decide; peers execute. Never leave a peer idle.</strong></p>
+</div>
+
+<h2>01 — Scope</h2>
+<p>This skill runs the <em>orchestrate</em> session. It coordinates peer Claude sessions: <code>spawn-d9</code>, <code>gm</code>, <code>characters</code>, <code>oscraft-ed</code>, <code>spoint-coder</code>, <code>hy3d</code>.</p>
+<p>Your job: collect each peer's remaining work, decide what runs next, assign one step per peer, and keep every agent working.</p>
+
+<h2>02 — Cycle</h2>
+<p>Repeat until no work remains.</p>
+<ol>
+  <li>Ask every peer for its full ranked remaining work, with current item and status. Run <code>ListAgents</code> first.</li>
+  <li>Decide the best next step for each peer.</li>
+  <li>Send each peer its single next step. Tell it to keep working on that item.</li>
+  <li>Ask each peer to report: <strong>finished</strong>, <strong>open</strong>, <strong>blocked</strong>.</li>
+</ol>
+
+<h2>03 — Decision rules</h2>
+<table>
+  <tr><th>Class</th><th>Examples</th><th>Action</th></tr>
+  <tr><td>Reversible</td><td>Small edits, local commits, read-only checks</td><td>Decide and proceed. Tell the owner afterwards.</td></tr>
+  <tr><td>Irreversible</td><td>Deletes, live Spawn sends, publishes, credential changes, live-match gate changes</td><td>Ask the owner first.</td></tr>
+  <tr><td>Blocked</td><td>Peer waiting on a held decision</td><td>Peer works on unblocked items instead.</td></tr>
+  <tr><td>Verification</td><td>Running tests, reading output</td><td>Decide and proceed.</td></tr>
+</table>
+<p>Ship small commits, pushed as each item is verified.</p>
+
+<h2>04 — Standing instructions for peers</h2>
+<ul>
+  <li><strong>Commit</strong> as lanmower, in the shared checkout. No clones, no worktrees.</li>
+  <li><strong>Search</strong> with gm's search and grep verbs, not shell <code>grep</code> or <code>find</code>.</li>
+  <li><strong>Browser work</strong> goes through playwriter. Close every page in a <code>finally</code> block. Name every closed page and server.</li>
+  <li><strong>Dev servers</strong> stop by their own PID. Never <code>pkill</code> or <code>killall</code>.</li>
+  <li><strong>Verify</strong> by running. Quote the witness output.</li>
+  <li><strong>Comments</strong> become code. Replace prose comments with self-explanatory code, or move what cannot be expressed that way into AGENTS.md.</li>
+</ul>
+
+<h2>05 — Held for the owner</h2>
+<p>The dispatcher never acts on these. It collects them into the owner report.</p>
+<ul>
+  <li>Decision sheet: <code>/workspace/bota/plan/28-owner-decision-sheet.md</code></li>
+  <li>Delete <code>../bota-notdoned</code> research/ and sources/</li>
+  <li>Live Spawn sends</li>
+  <li>6.88g source of truth: <code>s.lua</code>, <code>routes.osd</code></li>
+  <li>gm MCP reconnect (<code>/mcp</code> in the gm session)</li>
+</ul>
+
+<h2>06 — Owner report</h2>
+<p>One line per peer: <strong>finished</strong>, <strong>open</strong>, <strong>blocked</strong>, and which held decisions it is waiting on.</p>
+
+<h2>07 — Install</h2>
+<p>The skill lives at <code>.claude/skills/orchestrate/SKILL.md</code> in the orchestrate project. Launch Claude Code from <code>/workspace/orchestrate</code>. The project's <code>settings.json</code> allows the Skill tool, so <code>/orchestrate</code> works there.</p>
+<pre>/workspace/orchestrate/
+└── .claude/
+    ├── settings.json
+    └── skills/
+        └── orchestrate/
+            └── SKILL.md</pre>
+
+<footer>
+  <p>Source: <a href="https://github.com/AnEntrypoint/orchestrate">github.com/AnEntrypoint/orchestrate</a></p>
+</footer>
+
+</body>
+</html>
