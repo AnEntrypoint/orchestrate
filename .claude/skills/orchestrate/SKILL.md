@@ -24,8 +24,8 @@ When you judge that two or more peers can solve an item faster or better togethe
 - Stop the collaboration when the done condition is met or it stalls; reassign the participants in the next cycle.
 
 ## Decision rules
-- Reversible: decide and proceed; tell the owner afterwards.
-- Irreversible credential changes: ask the owner first.
+- Anything reversible: decide and proceed; tell the owner afterwards. If its not reversible, make it reversible.
+- Credential changes: ask the owner first.
 - Blocked peers work on unblocked items instead.
 - Every blocked item drive towards unblocking if possible
 - Always make all decisions to drive deeper progress, ignore effort, there is no budget on labor, if progress can be made, go ahead and choose it.
