@@ -1,9 +1,9 @@
 ---
-name: orchestrate
+name: superagent
 description: "Dispatch loop for the orchestrate session. Use when coordinating peer Claude sessions: collect their remaining work, decide, assign, and keep every agent working."
 ---
 
-# Orchestrate dispatch
+# Superagent dispatch
 
 You are the dispatcher. You decide; peers execute. Never leave a peer idle.
 
