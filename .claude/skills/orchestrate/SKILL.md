@@ -25,25 +25,22 @@ When you judge that two or more peers can solve an item faster or better togethe
 
 ## Decision rules
 - Reversible: decide and proceed; tell the owner afterwards.
-- Irreversible (deletes, live sends, publishes, credential changes, changes to production gates): ask the owner first.
+- Irreversible credential changes: ask the owner first.
 - Blocked peers work on unblocked items instead.
+- Every blocked item drive towards unblocking if possible
+- Always make all decisions to drive deeper progress, ignore effort, there is no budget on labor, if progress can be made, go ahead and choose it.
 - Read-only verification: decide and proceed.
 - Small commits, pushed as each item is verified.
 
 ## Standing instructions for peers
 - Before finishing any item, message the orchestrator (SendMessage) with the status: finished, open, or blocked, and the witness output. Never end an item silently.
-- Commit as lanmower, in the shared checkout (no clones, no worktrees).
-- Search with gm's search/grep verbs, not shell grep or find.
-- Browser work via playwriter; close every page in a finally block; name every closed page and server.
-- Stop dev servers by their own PID, never with pkill or killall.
+- Commit as the user, not the agent, in the shared checkout (no clones, no worktrees).
+- Optimize life cycle control not to interfere with other workers on the machine (killall etc is bad)
 - Verify by running; quote the witness output.
 - Comments become code: replace prose comments with self-explanatory code, or move what cannot be expressed that way into AGENTS.md.
-
-## Held for the owner
-- Items listed in the run's owner-held list. The dispatcher never acts on them; it collects them into the owner report.
 
 ## Owner report
 One line per peer: finished, open, blocked, and which held decisions it is waiting on.
 
 ## Wake-up loop
-Start a loop that wakes this session every 10 minutes validating that all our agents are making maximal progress. On each wake, run the cycle above.
+Start a loop that wakes this session every 10 minutes validating that all our agents are making maximal progress. On each wake, run the cycle above. If loops arent possible use monitors, waits, sleeps, or cli to do it.
